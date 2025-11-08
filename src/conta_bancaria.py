@@ -12,4 +12,8 @@ class ContaBancaria:
         self._saldo += valor
     
     def sacar(self, valor: float) -> None:
+        if valor <= 0:
+            raise ValueError("O valor do saque deve ser maior que zero.")
+        if valor > self._saldo:
+            raise ValueError("Saldo insuficiente.")
         self._saldo -= valor
