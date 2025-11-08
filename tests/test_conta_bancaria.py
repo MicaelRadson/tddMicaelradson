@@ -14,3 +14,14 @@ def test_saque_valido_diminui_saldo():
     conta.depositar(200)
     conta.sacar(50)
     assert conta.saldo == 150
+
+def test_nao_pode_usar_valores_nao_positivos():
+    conta = ContaBancaria()
+    with pytest.raises(ValueError):
+        conta.depositar(0)
+    with pytest.raises(ValueError):
+        conta.depositar(-10)
+    with pytest.raises(ValueError):
+        conta.sacar(0)
+    with pytest.raises(ValueError):
+        conta.sacar(-5)
